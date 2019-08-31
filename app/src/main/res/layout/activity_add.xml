@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddActivity">
+
+
+    <TextView
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="Add Buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    <EditText
+            android:hint="Name"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/edit_box"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+
+    />
+
+
+    <EditText
+            android:hint="Digital Pin No"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:id="@+id/pin_no"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/edit_box"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+
+    />
+
+
+
+
+    <Button
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:text="Add Button"
+            android:background="#4DFFFFFF"
+            android:id="@+id/add_button"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+
+    />
+
+
+
+
+
+</LinearLayout>
