@@ -1,6 +1,7 @@
 package com.example.smarthome;
 
 import android.content.Intent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,9 +66,19 @@ public class AddActivity extends AppCompatActivity {
 
                 Intent  intent=new Intent(AddActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
 
 
             }
         });
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.home);
+        onBackPressed();
+        return true;
+
     }
 }

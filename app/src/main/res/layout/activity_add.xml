@@ -30,9 +30,10 @@
 
 
     <EditText
+            android:textStyle="bold"
            android:layout_gravity="center"
             android:hint="Button Name"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorPrimary"
             android:padding="10dp"
             android:id="@+id/name"
             android:layout_width="match_parent"
@@ -46,8 +47,9 @@
 
 
     <EditText
+            android:textStyle="bold"
             android:hint="Digital Pin No"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorPrimary"
             android:padding="10dp"
             android:id="@+id/pin_no"
             android:layout_width="match_parent"
