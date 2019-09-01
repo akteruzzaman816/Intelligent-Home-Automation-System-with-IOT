@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        android:gravity="center"
-        android:background="@color/colorPrimary"
         android:orientation="vertical"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -11,23 +9,34 @@
         tools:context=".AddActivity">
 
 
-    <TextView
-            android:textSize="18sp"
-            android:layout_marginBottom="15dp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:text="Add Buttons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.Toolbar
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:titleTextColor="@android:color/white"
+            app:title="Add Buttons"
+            android:background="@color/colorPrimary"
+            android:id="@+id/add_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+            android:background="#ECECEC"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
 
     <EditText
-            android:hint="Name"
+           android:layout_gravity="center"
+            android:hint="Button Name"
             android:textColor="@android:color/white"
             android:padding="10dp"
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:background="@drawable/edit_box"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -42,7 +51,7 @@
             android:padding="10dp"
             android:id="@+id/pin_no"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:background="@drawable/edit_box"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
@@ -59,7 +68,7 @@
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:text="Add Button"
-            android:background="#4DFFFFFF"
+            android:background="@color/buttonColor"
             android:id="@+id/add_button"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -70,7 +79,7 @@
     />
 
 
-
+    </LinearLayout>
 
 
 </LinearLayout>

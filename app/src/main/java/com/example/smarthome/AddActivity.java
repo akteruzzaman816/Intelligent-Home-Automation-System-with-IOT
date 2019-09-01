@@ -6,18 +6,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.widget.Toolbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class AddActivity extends AppCompatActivity {
 
     Button  addButton;
     EditText name,pinNo;
+    Toolbar toolbar;
 
     //for firebase
     private FirebaseAuth auth;
@@ -33,6 +35,13 @@ public class AddActivity extends AppCompatActivity {
         addButton=findViewById(R.id.add_button);
         name=findViewById(R.id.name);
         pinNo=findViewById(R.id.pin_no);
+        toolbar=findViewById(R.id.add_toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+
 
 
         //Get Firebase auth instance

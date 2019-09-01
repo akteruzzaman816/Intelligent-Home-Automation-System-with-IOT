@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smarthome.AdapterClass;
 import com.example.smarthome.ButtonModel;
 import com.example.smarthome.R;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.github.ybq.android.spinkit.style.WanderingCubes;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,7 +34,6 @@ public class HomeFragment extends Fragment {
     String userUID;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private FirebaseRecyclerAdapter adapter;
     TextView warningText,keyText;
 
     ArrayList<ButtonModel> list;

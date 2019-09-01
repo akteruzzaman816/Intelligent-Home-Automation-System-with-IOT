@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
@@ -80,12 +81,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name,state;
         ImageView icon;
+        CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name=itemView.findViewById(R.id.name_id);
             icon=itemView.findViewById(R.id.icon);
             state=itemView.findViewById(R.id.state);
+            cardView=itemView.findViewById(R.id.view);
 
 
         }
