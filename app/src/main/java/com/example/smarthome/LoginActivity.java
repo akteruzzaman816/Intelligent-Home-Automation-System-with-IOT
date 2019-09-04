@@ -1,6 +1,7 @@
 package com.example.smarthome;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_login);
 
         //references
@@ -41,10 +43,10 @@ public class LoginActivity extends AppCompatActivity {
                 //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-//        if (auth.getCurrentUser() != null) {
-//            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//            finish();
-//        }
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
 
         signUp=findViewById(R.id.move_signup);
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     // there was an error
-
+                                        progressBar.setVisibility(View.GONE);
                                         Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_LONG).show();
                                 } else {
                                     progressBar.setVisibility(View.GONE);

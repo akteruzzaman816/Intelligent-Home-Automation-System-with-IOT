@@ -12,13 +12,25 @@
 
 
     <TextView
+            android:gravity="center"
             android:textSize="18sp"
             android:layout_marginBottom="15dp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:text="Welcome to SmartHome"
-            android:layout_width="wrap_content"
+            android:text="Setup your account"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+            android:visibility="gone"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/progressBar"
+            style="@style/SpinKitView.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/buttonColor" />
+
 
 
     <EditText
@@ -50,6 +62,20 @@
     />
 
     <EditText
+            android:hint="Address"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/edit_box"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+
+    />
+
+    <EditText
             android:hint="Password"
             android:textColor="@android:color/white"
             android:padding="10dp"
@@ -67,7 +93,7 @@
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:text="SignUp"
-            android:background="#4DFFFFFF"
+            android:background="@color/buttonColor"
             android:id="@+id/sign_up_button"
             android:layout_width="match_parent"
             android:layout_height="45dp"

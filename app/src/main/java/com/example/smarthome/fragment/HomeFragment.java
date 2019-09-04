@@ -17,16 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smarthome.AdapterClass;
 import com.example.smarthome.ButtonModel;
 import com.example.smarthome.R;
-import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.github.ybq.android.spinkit.style.WanderingCubes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class HomeFragment extends Fragment {
 
 

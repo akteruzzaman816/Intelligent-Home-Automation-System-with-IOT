@@ -1,6 +1,7 @@
 package com.example.smarthome;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import com.example.smarthome.fragment.HomeFragment;
 import com.example.smarthome.fragment.MapFragment;
+import com.example.smarthome.fragment.ProfileFragment;
+import com.example.smarthome.fragment.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
 
@@ -63,8 +67,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.map:
                 fragment=new MapFragment();
                 break;
+            case R.id.profile:
+                fragment=new ProfileFragment();
+                break;
+            case R.id.setting:
+                fragment=new SettingFragment();
+                break;
         }
 
         return loadFragment(fragment);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }
