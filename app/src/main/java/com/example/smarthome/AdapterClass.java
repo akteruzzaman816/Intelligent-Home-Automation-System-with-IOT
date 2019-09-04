@@ -38,14 +38,17 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
         if(list.get(i).getButtonState().equals("1")){
             holder.icon.setImageResource(R.drawable.bulb);
+            holder.pinNumber.setBackgroundResource(R.drawable.circle_green);
         }else{
             holder.icon.setImageResource(R.drawable.bulb1);
+            holder.pinNumber.setBackgroundResource(R.drawable.circle_red);
 
         }
 
 
         holder.name.setText(list.get(i).getButtonName());
         holder.state.setText(list.get(i).getButtonState());
+        holder.pinNumber.setText(list.get(i).getButtonPinNumber());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +108,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name,state;
+        TextView name,state,pinNumber;
         ImageView icon;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -113,6 +116,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             name=itemView.findViewById(R.id.name_id);
             state=itemView.findViewById(R.id.state);
             icon=itemView.findViewById(R.id.icon);
+            pinNumber=itemView.findViewById(R.id.pin_id);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

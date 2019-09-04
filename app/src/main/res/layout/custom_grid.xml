@@ -17,6 +17,16 @@
 
         xmlns:card_view="http://schemas.android.com/tools">
 
+        <TextView
+            android:textSize="10sp"
+            android:id="@+id/pin_id"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/circle_green"
+            android:text="D0"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
     <LinearLayout
             android:id="@+id/background"
             android:padding="10dp"
