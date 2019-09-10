@@ -1,6 +1,7 @@
 package com.example.smarthome.fragment;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class HomeFragment extends Fragment {
@@ -35,6 +38,8 @@ public class HomeFragment extends Fragment {
 
     ArrayList<ButtonModel> list;
     private ProgressBar progressBar;
+    DatabaseReference tempReference;
+    TextView temperature;
 
 
     @Override
@@ -42,9 +47,16 @@ public class HomeFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+
+
+
+        temperature=rootView.findViewById(R.id.temp);
+
         progressBar= rootView.findViewById(R.id.progressBar_home);
         WanderingCubes cube=new WanderingCubes();
         progressBar.setIndeterminateDrawable(cube);
+
+
 
         warningText=rootView.findViewById(R.id.no_data);
 
@@ -53,9 +65,39 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
         userUID= FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference= FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("Buttons");
-
+        tempReference= FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("temperature");
 
        // Toast.makeText(getActivity(), strtext, Toast.LENGTH_SHORT).show();
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+
+                tempReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int value = dataSnapshot.child("celsius").getValue(Integer.class);
+                        temperature.setText(String.valueOf(value)+" °C");
+
+                        if (value>40)
+                        {
+                            temperature.setTextColor(Color.parseColor("#FF0000"));
+
+                        }else {
+                            temperature.setTextColor(Color.parseColor("#000000"));
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+            }
+        },500,1000);
 
         return rootView;
 
