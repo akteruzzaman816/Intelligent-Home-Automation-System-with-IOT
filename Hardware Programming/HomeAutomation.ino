@@ -1,9 +1,9 @@
 #include <ESP8266WiFi.h>
 #include<FirebaseArduino.h>
-#define FIREBASE_HOST "smarthome-6f0fb.firebaseio.com"                     
-#define FIREBASE_AUTH "7z31PKgT2emgzyaKWpl8eN5AHYgGZmYSEmF6gsX3"       
-#define WIFI_SSID "Green_House"                                               
-#define WIFI_PASSWORD "akter0008" 
+#define FIREBASE_HOST "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"                     
+#define FIREBASE_AUTH "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"       
+#define WIFI_SSID "Wifi_Name"                                               
+#define WIFI_PASSWORD "wifi_password" 
 const int sensor =A0;
 
 
