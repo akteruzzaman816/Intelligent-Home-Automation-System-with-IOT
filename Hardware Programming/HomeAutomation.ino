@@ -1,6 +1,5 @@
 #include <ESP8266WiFi.h>
-#include<FirebaseArduino.h> 
-0
+#include<FirebaseArduino.h>
 #define FIREBASE_HOST "smarthome-6f0fb.firebaseio.com"                     
 #define FIREBASE_AUTH "7z31PKgT2emgzyaKWpl8eN5AHYgGZmYSEmF6gsX3"       
 #define WIFI_SSID "Green_House"                                               

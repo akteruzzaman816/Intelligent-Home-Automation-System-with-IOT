@@ -1,8 +1,10 @@
 package com.example.smarthome.fragment;
 
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,8 @@ public class HomeFragment extends Fragment {
     private ProgressBar progressBar;
     DatabaseReference tempReference;
     TextView temperature;
+    private DatabaseReference reference;
+
 
 
     @Override
@@ -66,6 +70,7 @@ public class HomeFragment extends Fragment {
         userUID= FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference= FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("Buttons");
         tempReference= FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("temperature");
+        reference= FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("Locations");
 
        // Toast.makeText(getActivity(), strtext, Toast.LENGTH_SHORT).show();
         new Timer().scheduleAtFixedRate(new TimerTask() {
@@ -75,15 +80,20 @@ public class HomeFragment extends Fragment {
                 tempReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        int value = dataSnapshot.child("celsius").getValue(Integer.class);
-                        temperature.setText(String.valueOf(value)+" °C");
-
-                        if (value>40)
+                        if (dataSnapshot.child("celsius").exists())
                         {
-                            temperature.setTextColor(Color.parseColor("#FF0000"));
+                            int value = dataSnapshot.child("celsius").getValue(Integer.class);
+                            temperature.setText(String.valueOf(value)+" °C");
 
-                        }else {
-                            temperature.setTextColor(Color.parseColor("#000000"));
+                            if (value>40)
+                            {
+                                temperature.setTextColor(Color.parseColor("#FF0000"));
+
+                            }else {
+                                temperature.setTextColor(Color.parseColor("#000000"));
+                            }
+
+
                         }
 
                     }
@@ -142,6 +152,41 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+
+
+
+
+
+
+
+        // retrive location data  from firebase..................................
+        reference.child("home").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.child("latitude").exists())
+                {
+                    final float latitude,longitude;
+                    latitude=dataSnapshot.child("latitude").getValue(Float.class);
+                    longitude=dataSnapshot.child("longitude").getValue(Float.class);
+
+                    SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getActivity());
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putFloat("latitude",latitude);
+                    editor.putFloat("longitude",longitude);
+                    editor.apply();
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 

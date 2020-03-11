@@ -11,9 +11,9 @@
 
     <application
             android:allowBackup="true"
-            android:icon="@drawable/home_selected"
+            android:icon="@drawable/smart_home"
             android:label="@string/app_name"
-            android:roundIcon="@drawable/home_selected"
+            android:roundIcon="@drawable/smart_home"
             android:screenOrientation="portrait"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">

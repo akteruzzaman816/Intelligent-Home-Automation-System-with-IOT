@@ -1,11 +1,13 @@
 package com.example.smarthome.fragment;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -31,9 +33,11 @@ import java.util.Map;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
-    GoogleMap mMap;
-    MapView mapView;
-    Marker marker;
+    private GoogleMap mMap;
+    private MapView mapView;
+    private Marker marker;
+    private boolean status=false;
+    private GeoQuery geoQuery;
 
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
@@ -50,6 +54,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        removeInfo();
 
 
         return rootView;
@@ -111,14 +117,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
 
-        // retrive location data  from firebase..................................
-        reference.child("home").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final double latitude,longitude;
-                latitude=dataSnapshot.child("latitude").getValue(Double.class);
-                longitude=dataSnapshot.child("longitude").getValue(Double.class);
 
+        SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(getActivity());
+        float latitude=preferences.getFloat("latitude",0f);
+        float longitude=preferences.getFloat("longitude",0f);
 
 // adding marker
 
@@ -141,11 +143,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 //                        .color(Color.RED));
 
 
-                GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(latitude,longitude),0.5f); //500m
+                 geoQuery = geoFire.queryAtLocation(new GeoLocation(latitude,longitude),0.5f); //500m
+                 geoQuery.setCenter(new GeoLocation(latitude,longitude));
+
                 geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
                     @Override
                     public void onKeyEntered(String key, GeoLocation location) {
                         Toast.makeText(getActivity(), "Activated", Toast.LENGTH_SHORT).show();
+                        status=true;
                         sendInfo();
                     }
 
@@ -174,22 +179,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
 
 
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
 
 
 
     }
 
     private void removeInfo() {
-        Map<String , String>info=new HashMap<>();
-        info.put("status","0");
-        reference.child("info").setValue(info);
+//        if (!status){
+//            Map<String , String>info=new HashMap<>();
+//            info.put("status","0");
+//            reference.child("info").setValue(info);
+//        }
+
 
     }
 
@@ -220,6 +223,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(final LocationResult locationResult) {
+
                 if (mMap != null) {
 
                     geoFire.setLocation("you", new GeoLocation(locationResult.getLastLocation().getLatitude(),
