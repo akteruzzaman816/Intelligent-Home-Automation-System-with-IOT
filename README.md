@@ -31,12 +31,12 @@ This project presents Internet of Things based smart home, monitoring and contro
    
 ### 8. Cuircit Design
 
-   <img src="images/9.png" alt="Insert into database" width="250" height="450"> 
+   <img src="images/9.jpg" alt="Insert into database" width="250" height="450"> 
    
    
 ### 9. Demo
 
-   <img src="images/10.png" alt="Insert into database" width="250" height="450">
+   <img src="images/10.jpg" alt="Insert into database" width="250" height="450">
    
    
    
