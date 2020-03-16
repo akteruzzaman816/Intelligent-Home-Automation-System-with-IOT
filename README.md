@@ -29,7 +29,7 @@ This project presents Internet of Things based smart home, monitoring and contro
 
    <img src="images/7.png" alt="Insert into database" width="250" height="500">
    
-### 8. Cuircit Design
+### 8. Circuit Design
 
    <img src="images/9.jpg" alt="Insert into database" width="829" height="472"> 
    
