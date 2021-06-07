@@ -41,7 +41,7 @@ This project presents Internet of Things based smart home, monitoring and contro
    <img src="images/10.jpg" alt="Insert into database" width="1112" height="834">
    
    
-### How to setup 
+### How to setup with hardware programming
 
    <img src="images/11.png" alt="how to use" width="1112" height="834">
    
