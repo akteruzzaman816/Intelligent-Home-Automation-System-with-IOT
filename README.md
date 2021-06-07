@@ -1,6 +1,8 @@
 # Intelligent-Home-Automation-System-with-IOT
 This project presents Internet of Things based smart home, monitoring and controlling of the home devices by using Android Applications
 
+### All FEATURES
+
 ### 1. Login page
 
    <img src="images/1.png" alt="login" width="250" height="500">
@@ -39,8 +41,10 @@ This project presents Internet of Things based smart home, monitoring and contro
    <img src="images/10.jpg" alt="Insert into database" width="1112" height="834">
    
    
+### How to setup 
+   <img src="images/11.jpg" alt="Insert into database" width="1112" height="834">
    
-   
+   <img src="images/12.jpg" alt="Insert into database" width="1112" height="834">
    
    
    
